@@ -59,3 +59,6 @@ class Binary:
 
     def __invert__(self):
         return Binary([abs(int(i) - 1) for i in str(self)])
+
+    def __getitem__(self, item):
+        return str(self)[-(item + 1)]

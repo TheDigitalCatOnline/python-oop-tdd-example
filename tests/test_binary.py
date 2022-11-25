@@ -144,3 +144,12 @@ def test_binary_shr():
 
 def test_binary_shr_pos():
     assert Binary("1101") >> 5 == Binary("0")
+
+
+# Indexing
+
+
+def test_binary_get_bit():
+    binary = Binary("0101110001")
+    assert binary[0] == "1"
+    assert binary[5] == "1"
