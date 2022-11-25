@@ -60,5 +60,13 @@ class Binary:
     def __invert__(self):
         return Binary([abs(int(i) - 1) for i in str(self)])
 
-    def __getitem__(self, item):
-        return str(self)[-(item + 1)]
+    def __getitem__(self, key):
+        reversed_list = [int(i) for i in reversed(str(self))]
+        sliced = reversed_list.__getitem__(key)
+        if isinstance(sliced, Sequence):
+            if len(sliced) > 0:
+                return Binary([i for i in reversed(sliced)])
+            else:
+                return Binary(0)
+        else:
+            return Binary(sliced)

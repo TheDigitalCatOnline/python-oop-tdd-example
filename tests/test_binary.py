@@ -153,3 +153,32 @@ def test_binary_get_bit():
     binary = Binary("0101110001")
     assert binary[0] == "1"
     assert binary[5] == "1"
+
+
+def test_binary_negative_index():
+    assert Binary("0101110001")[-1] == "1"
+    assert Binary("0101110001")[-2] == "0"
+
+
+def test_binary_illegal_index():
+    with pytest.raises(IndexError):
+        Binary("01101010")[7]
+
+
+def test_binary_inappropriate_type_index():
+    with pytest.raises(TypeError):
+        Binary("01101010")["key"]
+
+
+def test_binary_for_loop():
+    assert [int(i) for i in Binary("01101010")] == [0, 1, 0, 1, 0, 1, 1]
+
+
+def test_binary_slice():
+    assert Binary("01101010")[0:3] == Binary("10")
+    assert Binary("01101010")[1:4] == Binary("101")
+    assert Binary("01101010")[4:] == Binary("110")
+
+
+def test_empty_slice():
+    assert Binary("01101010")[4:4] == Binary("0")
