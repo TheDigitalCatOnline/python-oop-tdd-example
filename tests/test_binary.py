@@ -69,3 +69,78 @@ def test_binary_str():
 def test_binary_hex():
     binary = Binary(6)
     assert hex(binary) == "0x6"
+
+
+# Basic operations
+
+
+def test_binary_addition_int():
+    assert Binary(4) + 1 == Binary(5)
+
+
+def test_binary_addition_binary():
+    assert Binary(4) + Binary(5) == Binary(9)
+
+
+def test_binary_subtraction_int():
+    assert Binary(4) - 1 == Binary(3)
+
+
+def test_binary_subtraction_binary():
+    assert Binary(5) - Binary(4) == Binary(1)
+
+
+def test_binary_multiplication_int():
+    assert Binary(5) * 4 == Binary(20)
+
+
+def test_binary_multiplication_binary():
+    assert Binary(5) * Binary(6) == Binary(30)
+
+
+def test_binary_division_int():
+    assert Binary(20) / 4 == Binary(5)
+
+
+def test_binary_division_rem_int():
+    assert Binary(21) / 4 == Binary(5)
+
+
+def test_binary_division_binary():
+    assert Binary(20) / Binary(5) == Binary(4)
+
+
+def test_binary_division_rem_binary():
+    assert Binary(21) / Binary(5) == Binary(4)
+
+
+def test_binary_not():
+    assert ~Binary("1101") == Binary("10")
+
+
+def test_binary_and():
+    assert Binary("1101") & Binary("1") == Binary("1")
+
+
+def test_binary_or():
+    assert Binary("1101") | Binary("1") == Binary("1101")
+
+
+def test_binary_xor():
+    assert Binary("1101") ^ Binary("1") == Binary("1100")
+
+
+def test_binary_shl():
+    assert Binary("1101") << 1 == Binary("11010")
+
+
+def test_binary_shl_pos():
+    assert Binary("1101") << 5 == Binary("110100000")
+
+
+def test_binary_shr():
+    assert Binary("1101") >> 1 == Binary("110")
+
+
+def test_binary_shr_pos():
+    assert Binary("1101") >> 5 == Binary("0")

@@ -29,3 +29,33 @@ class Binary:
 
     def __eq__(self, other):
         return int(self) == int(other)
+
+    def __and__(self, other):
+        return Binary(self._value & Binary(other)._value)
+
+    def __or__(self, other):
+        return Binary(self._value | Binary(other)._value)
+
+    def __xor__(self, other):
+        return Binary(self._value ^ Binary(other)._value)
+
+    def __lshift__(self, pos):
+        return Binary(self._value << pos)
+
+    def __rshift__(self, pos):
+        return Binary(self._value >> pos)
+
+    def __add__(self, other):
+        return Binary(self._value + Binary(other)._value)
+
+    def __sub__(self, other):
+        return Binary(self._value - Binary(other)._value)
+
+    def __mul__(self, other):
+        return Binary(self._value * Binary(other)._value)
+
+    def __truediv__(self, other):
+        return Binary(int(self._value / Binary(other)._value))
+
+    def __invert__(self):
+        return Binary([abs(int(i) - 1) for i in str(self)])
