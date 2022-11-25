@@ -70,3 +70,6 @@ class Binary:
                 return Binary(0)
         else:
             return Binary(sliced)
+
+    def split(self, bits):
+        return (self[bits:], self[:bits])
